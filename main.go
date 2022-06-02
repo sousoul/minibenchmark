@@ -554,8 +554,8 @@ func main() {
 	DuritionVerRp := int64(0) // 统计所有组织验证Rp的时间
 	DuritionVerDzkp := int64(0) // 统计所有组织验证Dzkp的时间
 
-	txN := 10 // 测试时间开销时，测试10次，取均值
-	//txN := 1 // 测试存储开销时，测试1次
+	//txN := 10 // 测试时间开销时，测试10次，取均值
+	txN := 1 // 测试存储开销时，测试1次
 	for txidx:=0;txidx<txN;txidx++{
 		// txSpe
 		txSpe := GetR(ZKLedgerCurve, value, orgNum, spenderIdx, receiverIdx)
@@ -820,7 +820,7 @@ func main() {
 		}
 
 		fmt.Println(fmt.Sprintf("组织数：%d，共占%fKB\n", orgNum, float32(len(zkrowdata))/1024))
-		//time.Sleep(time.Hour)
+		time.Sleep(time.Hour)
 
 		//反序列化
 		//...
