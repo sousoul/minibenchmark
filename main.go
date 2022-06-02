@@ -554,8 +554,8 @@ func main() {
 	DuritionVerRp := int64(0) // 统计所有组织验证Rp的时间
 	DuritionVerDzkp := int64(0) // 统计所有组织验证Dzkp的时间
 
-	//txN := 10 // 测试时间开销时，测试10次，取均值
-	txN := 1 // 测试存储开销时，测试1次
+	txN := 10 // 测试时间开销时，测试10次，取均值
+	//txN := 1 // 测试存储开销时，测试1次
 	for txidx:=0;txidx<txN;txidx++{
 		// txSpe
 		txSpe := GetR(ZKLedgerCurve, value, orgNum, spenderIdx, receiverIdx)
@@ -820,7 +820,7 @@ func main() {
 		}
 
 		fmt.Println(fmt.Sprintf("组织数：%d，共占%fKB\n", orgNum, float32(len(zkrowdata))/1024))
-		time.Sleep(time.Hour)
+		//time.Sleep(time.Hour)
 
 		//反序列化
 		//...
@@ -965,14 +965,15 @@ func main() {
 
 		fmt.Println("<------------------结束----------------------->")
 	}
+	fmt.Println("===============密码学原语生成时间开销===============")
+	fmt.Println(fmt.Sprintf("Pedersen承诺：%vms\n" +
+		"令牌：%vms\n" +
+		"范围证明：%vms\n" +
+		"析取证明：%vms\n", float64(DuritionCalComm)/1e3/float64(txN), float64(DuritionCalToken)/1e3/float64(txN), float64(DuritionCalRp)/1e3/float64(txN), float64(DuritionCalDzkp)/1e3/float64(txN)))
 
-	fmt.Println(fmt.Sprintf("计算Comm：%vms\n" +
-		"计算Token：%vms\n" +
-		"计算Rp：%vms\n" +
-		"计算Dzkp：%vms\n", float64(DuritionCalComm)/1e3/float64(txN), float64(DuritionCalToken)/1e3/float64(txN), float64(DuritionCalRp)/1e3/float64(txN), float64(DuritionCalDzkp)/1e3/float64(txN)))
-
-	fmt.Println(fmt.Sprintf("验证Proof of Balance：%vms\n" +
-		"验证Proof of Correctness：%vms\n" +
-		"验证Rp：%vms\n" +
-		"验证Dzkp：%vms\n", float64(DuritionVerBal)/1e3/float64(txN), float64(DuritionVerCorr)/1e3/float64(txN), float64(DuritionVerRp)/1e3/float64(txN), float64(DuritionVerDzkp)/1e3/float64(txN)))
+	fmt.Println("===============零知识证明验证时间开销===============")
+	fmt.Println(fmt.Sprintf("金额平衡性：%vms\n" +
+		"承诺正确性：%vms\n" +
+		"范围证明：%vms\n" +
+		"析取证明：%vms\n", float64(DuritionVerBal)/1e3/float64(txN), float64(DuritionVerCorr)/1e3/float64(txN), float64(DuritionVerRp)/1e3/float64(txN), float64(DuritionVerDzkp)/1e3/float64(txN)))
 }
