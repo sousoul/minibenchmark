@@ -1,6 +1,8 @@
 # minibenchmark
 在main.go中，我们将区块链可信交易构件中涉及到的 Pedersen 承诺等密码学原语构建成一个benchmark，并在表4-1所示的 CPU 上进行了测试，用于测试密码学原语时间开销、存储开销测试。
 
+<img width="600" alt="截屏2022-06-02 下午4 27 16" src="https://user-images.githubusercontent.com/49592082/171588166-b1187bac-25a7-46b7-b4a6-a09cc304dd18.png">
+
 在测试时，我们使用 runtime.GOMAXPROCS(1) 指令将基准程序占用的 CPU 设置为 1 核；同时将main.go中的变量orgNum设置成不同值，来改变系统中的组织数。
 
 ## 1. 时间开销
