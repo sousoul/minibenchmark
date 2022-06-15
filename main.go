@@ -520,6 +520,7 @@ type Dzkp struct {
 var Ledger []*zkrow_package.Zkrow
 
 func main() {
+	fmt.Println("<------------------------------------ 基于区块链的可信交易构件　------------------------------------>")
 	fmt.Println("<------------------限制核心数----------------------->")
 	runtime.GOMAXPROCS(1) //设置cpu的核的数量
 
