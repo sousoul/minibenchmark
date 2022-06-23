@@ -530,7 +530,7 @@ func main() {
 	fmt.Println("<------------------准备组织信息----------------------->")
 	spenderIdx := 0
 	receiverIdx := 1
-	orgNum := 10
+	orgNum := 8
 	var Asset []int64
 	for i:=0;i<orgNum;i++{ // 初始余额
 		Asset = append(Asset, 100)
